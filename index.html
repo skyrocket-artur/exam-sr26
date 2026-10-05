@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Экзамен Skyrocket</title>
+<meta name="description" content="20 вопросов для участников Skyrocket: российский рынок, облигации, фьючерсы и риск-менеджмент.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Экзамен Skyrocket">
+<meta property="og:description" content="20 вопросов. Звание, слабые места и план на месяц.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0F14; --panel:#111820; --panel2:#0F161D; --line:#1E2A36; --line2:#243342;
+  --text:#E8EEF3; --muted:#7D8B99; --up:#00D68F; --down:#FF4D6A; --gold:#F5C451;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:Onest,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;overflow-x:hidden;position:relative}
+.bg{position:fixed;inset:0;pointer-events:none;
+  background-image:linear-gradient(#1E2A3640 1px,transparent 1px),linear-gradient(90deg,#1E2A3640 1px,transparent 1px);
+  background-size:60px 60px}
+.glow1{position:fixed;width:620px;height:620px;right:-260px;top:-260px;background:radial-gradient(#00D68F2e,transparent 65%);pointer-events:none}
+.glow2{position:fixed;width:620px;height:620px;left:-300px;bottom:-300px;background:radial-gradient(#F5C45120,transparent 65%);pointer-events:none}
+.mono{font-family:"JetBrains Mono",monospace}
+.tick{position:sticky;top:0;z-index:5;height:38px;background:#0d141bcc;backdrop-filter:blur(6px);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.tick-in{display:inline-block;padding-left:100%;animation:run 38s linear infinite;font:700 13px/38px "JetBrains Mono",monospace;color:var(--muted)}
+.tick-in b{color:var(--up);font-weight:700}.tick-in i{color:var(--down);font-style:normal}
+@keyframes run{to{transform:translateX(-100%)}}
+.wrap{position:relative;max-width:640px;margin:0 auto;padding:22px 16px 48px}
+.live{font:700 13px "JetBrains Mono",monospace;color:var(--up);letter-spacing:1.5px;display:flex;justify-content:space-between;align-items:center}
+.live span{color:var(--muted)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--up);box-shadow:0 0 10px var(--up);margin-right:8px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font-weight:800;font-size:clamp(34px,9vw,52px);line-height:1.02;letter-spacing:-1.5px;margin-top:18px}
+h1 em{font-style:normal;background:linear-gradient(90deg,#00D68F,#7CF5C4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:#B9C4CE;font-size:17px;line-height:1.5;margin-top:14px}
+.panel{background:linear-gradient(var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.cat{padding:14px;border-left:6px solid var(--up)}
+.cat:nth-child(2n){border-left-color:var(--gold)}
+.cat .k{font:700 11px "JetBrains Mono",monospace;color:var(--muted);letter-spacing:1px}
+.cat .v{font-weight:700;font-size:15px;margin-top:4px}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:18px 20px;font:800 18px Onest,sans-serif;cursor:pointer;
+  background:linear-gradient(90deg,#00D68F,#35E7A8);color:#04130c;box-shadow:0 0 40px #00D68F33;transition:transform .12s}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line2);box-shadow:none}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.note{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.45}
+.hidden{display:none!important}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font:700 13px "JetBrains Mono",monospace;color:var(--muted);letter-spacing:1px}
+.qhead .tag{color:var(--gold)}
+.bar{height:6px;background:var(--line);border-radius:6px;margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#00D68F,#7CF5C4);transition:width .35s}
+.qcard{margin-top:18px;padding:22px 18px}
+.qnum{font:700 12px "JetBrains Mono",monospace;color:var(--up);letter-spacing:1px}
+.qtext{font-weight:700;font-size:21px;line-height:1.3;margin-top:8px;letter-spacing:-.3px}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;padding:15px 14px;border-radius:12px;cursor:pointer;
+  background:#0c1218;border:1px solid var(--line2);color:var(--text);font:600 16px/1.35 Onest,sans-serif;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#3a4c5e}
+.opt .l{flex:0 0 26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--line);font:700 13px "JetBrains Mono",monospace;color:var(--muted)}
+.opt.ok{border-color:var(--up);background:#00D68F14}.opt.ok .l{background:var(--up);color:#04130c}
+.opt.bad{border-color:var(--down);background:#FF4D6A14}.opt.bad .l{background:var(--down);color:#fff}
+.opt.lock{cursor:default}
+.explain{margin-top:16px;padding:14px;border-radius:12px;border:1px dashed var(--line2);font-size:15px;line-height:1.5;color:#C9D3DC}
+.explain b{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:1px;display:block;margin-bottom:6px}
+.explain.ok b{color:var(--up)}.explain.bad b{color:var(--down)}
+.next{margin-top:16px}
+
+/* result */
+.rank{margin-top:18px;padding:26px 20px;text-align:center;position:relative;overflow:hidden}
+.rank .k{font:700 12px "JetBrains Mono",monospace;color:var(--muted);letter-spacing:1.5px}
+.rank .title{font-weight:800;font-size:clamp(30px,8vw,42px);letter-spacing:-1px;margin-top:8px;line-height:1.05}
+.rank .score{font:700 64px/1 "JetBrains Mono",monospace;margin-top:14px;color:var(--up)}
+.rank .score span{font-size:26px;color:var(--muted)}
+.rank .desc{color:#B9C4CE;font-size:16px;line-height:1.5;margin-top:14px}
+.badge{display:inline-block;margin-top:14px;padding:6px 12px;border-radius:30px;border:1px solid var(--gold);color:var(--gold);font:700 12px "JetBrains Mono",monospace;letter-spacing:1px}
+.sec{margin-top:26px;font:700 13px "JetBrains Mono",monospace;color:var(--muted);letter-spacing:1.5px}
+.rows{margin-top:10px;padding:8px 16px}
+.row{padding:12px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row .top{display:flex;justify-content:space-between;font-weight:700;font-size:15px}
+.row .top span{font-family:"JetBrains Mono",monospace}
+.meter{height:8px;border-radius:8px;background:var(--line);margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:8px}
+.tip{margin-top:10px;padding:16px;border-left:6px solid var(--down)}
+.tip.gold{border-left-color:var(--gold)}.tip.green{border-left-color:var(--up)}
+.tip h3{font-size:17px;font-weight:800}
+.tip p{font-size:15px;line-height:1.5;color:#C9D3DC;margin-top:6px}
+.tip a{color:var(--up);text-decoration:none;font-weight:700}
+.actions{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.toast{pointer-events:none;position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--up);color:#04130c;font-weight:800;padding:12px 18px;border-radius:12px;transition:.25s;z-index:9}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.disc{font-size:12px;color:#5f6d7a;margin-top:26px;line-height:1.5;text-align:center}
+@media (min-width:560px){.qtext{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="glow1"></div><div class="glow2"></div>
+<div class="tick"><div class="tick-in">SKYROCKET <b>▲</b> ЭКЗАМЕН &nbsp;·&nbsp; IMOEX <b>▲</b> &nbsp;·&nbsp; ОФЗ <b>▲</b> &nbsp;·&nbsp; BR <i>▼</i> &nbsp;·&nbsp; ГО · ВАРМАРЖА · СТОП-ЛОСС &nbsp;·&nbsp; РИСК 1% <b>▲</b> &nbsp;·&nbsp; T+1 &nbsp;·&nbsp; ДИВГЭП <i>▼</i> &nbsp;·&nbsp; ТОЛЬКО ДЛЯ СВОИХ</div></div>
+
+<div class="wrap">
+
+<!-- ============ START ============ -->
+<section id="start">
+  <div class="live"><div><i class="dot"></i>ЗАКРЫТЫЙ ЭКЗАМЕН</div><span>20 ВОПРОСОВ · ~7 МИН</span></div>
+  <h1>Какой ты трейдер<br><em>на самом деле?</em></h1>
+  <p class="lead">20 вопросов про российский рынок, облигации, фьючерсы и риск. В конце получишь звание, увидишь слабые места и что тебе сейчас стоит торговать, а что лучше пока не трогать.</p>
+  <div class="cats">
+    <div class="panel cat"><div class="k">БЛОК 1</div><div class="v">Российский рынок</div></div>
+    <div class="panel cat"><div class="k">БЛОК 2</div><div class="v">Облигации и инструменты</div></div>
+    <div class="panel cat"><div class="k">БЛОК 3</div><div class="v">Срочный рынок</div></div>
+    <div class="panel cat"><div class="k">БЛОК 4</div><div class="v">Риск-менеджмент</div></div>
+  </div>
+  <button class="btn" style="margin-top:24px" id="go">Начать экзамен</button>
+  <p class="note">Подглядывать в базу знаний можно, но честный результат полезнее. После каждого ответа покажу правильный вариант и коротко объясню.</p>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="hidden">
+  <div class="qhead"><span id="qcount">01 / 20</span><span class="tag" id="qcat">РОССИЙСКИЙ РЫНОК</span></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="panel qcard">
+    <div class="qnum" id="qnum">ВОПРОС 1</div>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div id="explain" class="explain hidden"></div>
+  </div>
+  <button class="btn next hidden" id="next">Дальше</button>
+</section>
+
+<!-- ============ RESULT ============ -->
+<section id="result" class="hidden">
+  <div class="live"><div><i class="dot"></i>ИТОГИ ЭКЗАМЕНА</div><span id="rdate"></span></div>
+  <div class="panel rank">
+    <div class="k">ТВОЁ ЗВАНИЕ</div>
+    <div class="title" id="rtitle"></div>
+    <div class="score" id="rscore"></div>
+    <div class="desc" id="rdesc"></div>
+    <div class="badge" id="rprofile"></div>
+  </div>
+
+  <div class="sec">РЕЗУЛЬТАТ ПО БЛОКАМ</div>
+  <div class="panel rows" id="rows"></div>
+
+  <div class="sec" id="weakTitle">СЛАБЫЕ МЕСТА</div>
+  <div id="weak"></div>
+
+  <div class="sec">ЧТО ТЕБЕ СЕЙЧАС ТОРГОВАТЬ</div>
+  <div id="plan"></div>
+
+  <div class="actions">
+    <button class="btn" id="share">Скопировать результат для чата</button>
+    <button class="btn ghost" id="again">Пройти ещё раз</button>
+  </div>
+  <p class="disc">Тест для участников Skyrocket. Советы в итогах касаются типа инструментов и подхода, а не конкретных бумаг. Не является инвестиционной рекомендацией.</p>
+</section>
+
+</div>
+<div class="toast" id="toast">Скопировано, вставляй в чат 🚀</div>
+
+<script>
+const CATS = {
+  rus:  {name:'Российский рынок', kb:'Модуль 2 «Как устроен рынок» и урок 4.4 «Дивидендная стратегия»'},
+  bond: {name:'Облигации и инструменты', kb:'Модуль 3 «Инструменты»: уроки про облигации и фонды, урок 2.4 «Налоги и льготы»'},
+  fut:  {name:'Срочный рынок', kb:'Уроки 6.8–6.10 «Фьючерсы» и 6.11 «Сырьё и нефть»'},
+  risk: {name:'Риск-менеджмент', kb:'Урок 6.1 «Инвестор и трейдер, риск-менеджмент» и 6.13 «Торговая система и дневник»'}
+};
+
+const Q = [
+ {c:'rus', q:'Что такое лот на Мосбирже?',
+  o:['Минимальная сумма сделки в рублях','Минимальное количество бумаг в одной заявке','Всегда пакет из 100 акций','Комиссия биржи за сделку'],
+  a:1, e:'Лот: минимальное количество бумаг, которое можно купить в одной заявке. У разных акций он разный: где-то 1 бумага, где-то 10 или 100. Поэтому и сумма лота у всех разная.'},
+ {c:'bond', q:'Ключевая ставка снижается. Что обычно происходит с ценой длинных ОФЗ с постоянным купоном?',
+  o:['Падает','Растёт','Не меняется: купон же фиксированный','Бумагу досрочно гасят'],
+  a:1, e:'Цена облигации и ставки ходят в разные стороны. Когда ставка падает, старый высокий купон становится ценнее, и длинные ОФЗ дорожают сильнее всего.'},
+ {c:'fut', q:'Что такое ГО по фьючерсу?',
+  o:['Гарантированный доход по контракту','Комиссия биржи за экспирацию','Сумма, которую брокер блокирует под одну открытую позицию','Цена фьючерса в день экспирации'],
+  a:2, e:'Гарантийное обеспечение работает как залог под позицию. Платить полную стоимость контракта не нужно, блокируется только ГО. Отсюда и плечо.'},
+ {c:'risk', q:'Депозит 500 000 ₽, риск на сделку 1%. Стоп стоит в 50 ₽ от цены входа. Сколько акций максимум можно взять?',
+  o:['10 акций','50 акций','100 акций','1 000 акций'],
+  a:2, e:'1% от 500 000 ₽ = 5 000 ₽. Делим на расстояние до стопа: 5 000 / 50 = 100 акций. Сначала считаешь риск, потом объём, а не наоборот.'},
+ {c:'rus', q:'По акциям на Мосбирже режим расчётов T+1. Дата закрытия реестра под дивиденды выпадает на пятницу. До какого дня включительно надо купить акцию?',
+  o:['До пятницы','До четверга','До среды','До понедельника следующей недели'],
+  a:1, e:'При T+1 бумаги приходят на следующий рабочий день. Купил в четверг, в пятницу ты в реестре. Купишь в пятницу, дивиденда не будет.'},
+ {c:'bond', q:'Какие ОФЗ меньше всего теряют в цене, когда ключевая ставка растёт?',
+  o:['Длинные ОФЗ-ПД на 15 лет','ОФЗ-ПК (флоатеры) с купоном, привязанным к ставке','ОФЗ-ИН, привязанные к инфляции','Любые ОФЗ падают одинаково'],
+  a:1, e:'У флоатеров купон пересчитывается вслед за ставкой RUONIA, поэтому цена держится около номинала. Длинные ОФЗ с постоянным купоном при росте ставки падают сильнее всего.'},
+ {c:'fut', q:'Что такое вариационная маржа?',
+  o:['Разница между ценой фьючерса и акции','Ежедневный пересчёт прибыли или убытка по позиции на клиринге','Плата брокеру за перенос позиции','Резерв биржи на случай дефолта'],
+  a:1, e:'На каждом клиринге биржа пересчитывает позицию по текущей цене. Прибыль зачисляется деньгами на счёт, убыток списывается. Поэтому фьючерсы и называют «живыми» деньгами.'},
+ {c:'risk', q:'Портфель просел на 50%. Сколько нужно заработать, чтобы вернуться в ноль?',
+  o:['+50%','+75%','+100%','+150%'],
+  a:2, e:'Было 100, стало 50. Чтобы из 50 снова сделать 100, нужно +100%. Поэтому большие просадки так опасны: отыгрывать их в разы тяжелее.'},
+ {c:'rus', q:'Что такое дивидендный гэп?',
+  o:['Рост акции перед объявлением дивидендов','Падение цены акции примерно на размер дивиденда после отсечки','Задержка выплаты дивидендов','Разница между дивидендами по обычке и префе'],
+  a:1, e:'После отсечки цена обычно падает примерно на размер дивиденда, ведь эти деньги уже «ушли» акционерам. Дальше рынок решает, закрывать гэп или нет.'},
+ {c:'bond', q:'Покупаешь облигацию между выплатами купона. Что ещё платишь продавцу, кроме цены?',
+  o:['Ничего','НКД, накопленный купонный доход','Налог за продавца','Штраф за досрочную продажу'],
+  a:1, e:'НКД: часть купона, накопленная с прошлой выплаты. Ты платишь её продавцу, а в день выплаты получаешь купон целиком. Так всё честно для обоих.'},
+ {c:'fut', q:'ГО по фьючерсу около 12% от стоимости контракта. Какое плечо это даёт примерно?',
+  o:['Около 2','Около 4','Около 8','Около 20'],
+  a:2, e:'1 / 0,12 ≈ 8. На каждый рубль ГО ты управляешь позицией примерно на 8 рублей. Но никто не заставляет брать максимум: можно держать на счёте деньги на всю стоимость контракта.'},
+ {c:'risk', q:'Ты торгуешь с соотношением риск/прибыль 1:3. При какой минимальной доле прибыльных сделок выходишь в ноль (без комиссий)?',
+  o:['25%','33%','50%','75%'],
+  a:0, e:'Одна прибыльная сделка перекрывает три убыточные. 1 из 4 = 25%. Хорошее соотношение позволяет ошибаться чаще, чем угадывать.'},
+ {c:'rus', q:'Чем обычно отличаются привилегированные акции от обыкновенных?',
+  o:['Обычно нет права голоса, зато дивиденды часто закреплены в уставе','Они всегда дороже обыкновенных','По ним нельзя получать дивиденды','Их могут покупать только квалифицированные инвесторы'],
+  a:0, e:'У префов обычно нет голоса на собрании, но формула дивидендов часто прописана в уставе. Классический пример: Сургутнефтегаз-п.'},
+ {c:'bond', q:'Что такое БПИФ на индекс Мосбиржи?',
+  o:['Облигация с доходностью индекса','Фонд, который держит акции из индекса: купил пай и получил всю корзину','Фьючерс на индекс','Вклад с привязкой к индексу'],
+  a:1, e:'Биржевой фонд покупает бумаги индекса за тебя. Один пай даёт диверсификацию по десяткам компаний. Удобно для старта, но за управление берут комиссию.'},
+ {c:'fut', q:'Фьючерс BR (Brent) на Мосбирже: контракт на 10 баррелей. Цена выросла на 2 $. Сколько заработал лонг из 1 контракта?',
+  o:['2 $','10 $','20 $','200 $'],
+  a:2, e:'10 баррелей × 2 $ = 20 $. Вариационная маржа придёт в рублях по курсу. Всегда считай, сколько стоит шаг цены в деньгах, до входа в сделку.'},
+ {c:'risk', q:'Где правильно ставить стоп-лосс?',
+  o:['На сумме, которую не жалко потерять','Там, где идея сделки перестаёт работать, например за уровнем','Ровно −10% от входа в любой сделке','Стоп не нужен, если веришь в компанию'],
+  a:1, e:'Стоп ставится там, где ты признаёшь, что ошибся: за уровнем, за минимумом. А уже под это расстояние подбираешь объём позиции.'},
+ {c:'bond', q:'Сколько нужно держать акции, чтобы применить льготу на долгосрочное владение (ЛДВ) и не платить НДФЛ с прибыли в пределах лимита?',
+  o:['Больше 1 года','Больше 3 лет','Больше 5 лет','Больше 10 лет'],
+  a:1, e:'ЛДВ работает для бумаг, которыми владеешь больше 3 лет. Это одна из причин держать долгосрочный портфель отдельно от трейдинга.'},
+ {c:'fut', q:'Чем вечный фьючерс на Мосбирже отличается от обычного?',
+  o:['Его нельзя продавать в шорт','У него нет экспирации, а за перенос позиции каждый день начисляется или списывается плата','Он торгуется только по выходным','По нему не нужно ГО'],
+  a:1, e:'Вечный фьючерс не нужно перекладывать в новый контракт. Взамен каждый день идёт расчёт финансирования, которое тянет цену фьючерса к цене базового актива.'},
+ {c:'rus', q:'Какой индекс Мосбиржи считается в рублях и показывает рынок крупнейших российских акций?',
+  o:['RTS','IMOEX','RGBI','MOEXBC'],
+  a:1, e:'IMOEX: главный индекс в рублях. RTS: те же акции, но в пересчёте на доллары. RGBI: индекс гособлигаций. MOEXBC: индекс голубых фишек.'},
+ {c:'risk', q:'Сколько процентов депозита разумно рисковать в одной сделке, пока ты набираешь опыт?',
+  o:['0,5–2%','5–10%','20–30%','Сколько угодно, если сетап хороший'],
+  a:0, e:'При риске 1% даже 10 убытков подряд оставят тебе 90% счёта. При риске 10% та же серия уничтожит половину депозита.'}
+];
+
+const RANKS = [
+ {min:0,  t:'Стажёр рынка', d:'Пока рынок для тебя больше лотерея, чем система. Это нормально: все с этого начинали. Начни с базы знаний и не торопись с плечом.'},
+ {min:7,  t:'Частный инвестор', d:'База есть, но в деталях ещё плаваешь. Самое время собрать долгосрочный портфель и разобрать свои слабые блоки ниже.'},
+ {min:12, t:'Трейдер', d:'Ты понимаешь, как устроен рынок, и умеешь считать риск. Осталось подтянуть пару тем, и можно аккуратно расширять арсенал.'},
+ {min:16, t:'Портфельный управляющий', d:'Сильный результат. Ты разбираешься и в инструментах, и в риске. С таким уровнем можно комбинировать портфель и трейдинг.'},
+ {min:19, t:'Легенда Skyrocket', d:'Почти без ошибок. Уважение. Заходи в чат и помогай новичкам, у тебя точно есть что рассказать.'}
+];
+
+let i = 0, picks = [];
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(2,'0');
+const L = ['A','B','C','D'];
+
+function show(id){['start','quiz','result'].forEach(s=>$('#'+s).classList.toggle('hidden', s!==id)); window.scrollTo({top:0,behavior:'smooth'});}
+
+function render(){
+  const q = Q[i];
+  $('#qcount').textContent = pad(i+1)+' / '+Q.length;
+  $('#qcat').textContent = CATS[q.c].name.toUpperCase();
+  $('#qnum').textContent = 'ВОПРОС '+(i+1);
+  $('#qtext').textContent = q.q;
+  $('#prog').style.width = (i/Q.length*100)+'%';
+  const box = $('#opts'); box.innerHTML = '';
+  q.o.forEach((t,k)=>{
+    const b = document.createElement('button');
+    b.className='opt'; b.innerHTML = '<span class="l">'+L[k]+'</span><span></span>';
+    b.lastChild.textContent = t;
+    b.onclick = () => answer(k);
+    box.appendChild(b);
+  });
+  $('#explain').className='explain hidden';
+  $('#next').classList.add('hidden');
+}
+
+function answer(k){
+  const q = Q[i]; if (picks[i] !== undefined) return;
+  picks[i] = k;
+  const bs = [...document.querySelectorAll('.opt')];
+  bs.forEach((b,n)=>{ b.classList.add('lock'); if(n===q.a) b.classList.add('ok'); else if(n===k) b.classList.add('bad'); });
+  const ok = k === q.a, ex = $('#explain');
+  ex.className = 'explain '+(ok?'ok':'bad');
+  ex.innerHTML = '<b>'+(ok?'✓ ВЕРНО':'✕ НЕ СОВСЕМ')+'</b>';
+  ex.appendChild(document.createTextNode(q.e));
+  $('#prog').style.width = ((i+1)/Q.length*100)+'%';
+  const nx = $('#next'); nx.textContent = i===Q.length-1 ? 'Узнать звание' : 'Дальше'; nx.classList.remove('hidden');
+  setTimeout(()=>nx.scrollIntoView({behavior:'smooth',block:'nearest'}),80);
+}
+
+function result(){
+  const total = Q.reduce((s,q,n)=>s+(picks[n]===q.a?1:0),0);
+  const by = {}; Object.keys(CATS).forEach(c=>by[c]={ok:0,all:0});
+  Q.forEach((q,n)=>{by[q.c].all++; if(picks[n]===q.a) by[q.c].ok++;});
+  const rank = [...RANKS].reverse().find(r=>total>=r.min);
+  $('#rtitle').textContent = rank.t;
+  $('#rscore').innerHTML = total+'<span>/'+Q.length+'</span>';
+  $('#rdesc').textContent = rank.d;
+  const d = new Date(); $('#rdate').textContent = pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();
+
+  const pct = c => by[c].ok/by[c].all;
+  const trader = pct('fut')+pct('risk'), investor = pct('rus')+pct('bond');
+  $('#rprofile').textContent = Math.abs(trader-investor)<0.2 ? 'ПРОФИЛЬ: УНИВЕРСАЛ' : (trader>investor ? 'ПРОФИЛЬ: ТРЕЙДЕР' : 'ПРОФИЛЬ: ИНВЕСТОР');
+
+  $('#rows').innerHTML = Object.keys(CATS).map(c=>{
+    const p = pct(c), col = p>=0.8?'var(--up)':p>=0.6?'var(--gold)':'var(--down)';
+    return '<div class="row"><div class="top">'+CATS[c].name+'<span style="color:'+col+'">'+by[c].ok+'/'+by[c].all+'</span></div><div class="meter"><i style="width:'+(p*100)+'%;background:'+col+'"></i></div></div>';
+  }).join('');
+
+  const weak = Object.keys(CATS).filter(c=>pct(c)<0.6).sort((a,b)=>pct(a)-pct(b));
+  const mid  = Object.keys(CATS).filter(c=>pct(c)>=0.6 && pct(c)<0.8);
+  let wh = '';
+  if (!weak.length && !mid.length){
+    $('#weakTitle').textContent = 'СЛАБЫХ МЕСТ НЕТ';
+    wh = '<div class="panel tip green"><h3>Все блоки на 80%+</h3><p>Редкий результат. Пройди тест ещё раз через месяц и проверь, не забылось ли.</p></div>';
+  } else {
+    $('#weakTitle').textContent = 'СЛАБЫЕ МЕСТА';
+    weak.forEach((c,n)=>{ wh += '<div class="panel tip"><h3>'+CATS[c].name+': '+by[c].ok+' из '+by[c].all+'</h3><p>'+(n===0?'Твоя главная зона роста. ':'Этот блок тоже стоит подтянуть. ')+'Что пройти в базе знаний: '+CATS[c].kb+'.</p></div>'; });
+    mid.forEach(c=>{ wh += '<div class="panel tip gold"><h3>'+CATS[c].name+': '+by[c].ok+' из '+by[c].all+'</h3><p>Неплохо, но есть пробелы. Освежи: '+CATS[c].kb+'.</p></div>'; });
+  }
+  $('#weak').innerHTML = wh;
+
+  const P = [];
+  const riskOk = pct('risk')>=0.8, futOk = pct('fut')>=0.8, bondOk = pct('bond')>=0.6, rusOk = pct('rus')>=0.6;
+  if (!riskOk) P.push(['','Пока без плеча','Риск-менеджмент лежит в основе всего. Пока он ниже 80%, фьючерсы и маржинальная торговля скорее съедят депозит, чем помогут. Торгуй только своими деньгами и считай риск 1% на каждую сделку.']);
+  if (riskOk && futOk) P.push(['green','Фьючерсы: можно','Ты понимаешь ГО, вармаржу и умеешь считать позицию. Подходят фьючерсы на индекс Мосбиржи и нефть: начни с 1 контракта, держи на счёте запас денег и не превышай риск 1–2% на сделку.']);
+  else if (riskOk && !futOk) P.push(['gold','Фьючерсы: сначала теория','Риск считаешь хорошо, но механику срочного рынка стоит подтянуть. Пока торгуй акциями из сделок канала, а фьючерсы пробуй на минимальном объёме после уроков 6.8–6.10.']);
+  if (bondOk && rusOk) P.push(['green','Портфель: акции + ОФЗ','Основу держи в долгосрочном портфеле: дивидендные акции и ОФЗ. Ставку на снижение ключевой ставки удобнее делать через длинные ОФЗ, защиту от её роста дают флоатеры.']);
+  else P.push(['gold','Портфель: начни с простого','Начни с понятных инструментов: БПИФ на индекс Мосбиржи и короткие ОФЗ. Сложные облигации и отдельные акции добавляй, когда закроешь пробелы из блока «'+(rusOk?CATS.bond.name:CATS.rus.name)+'».']);
+  P.push(['green','Сделки из канала','Повторяй сделки из Skyrocket на ту долю портфеля, которая указана в посте. Если сделка не подходит под твой уровень (например, фьючерс при слабом риск-менеджменте), просто пропусти её.']);
+  $('#plan').innerHTML = P.map(p=>'<div class="panel tip '+p[0]+'"><h3>'+p[1]+'</h3><p>'+p[2]+'</p></div>').join('');
+
+  window.__share = 'Прошёл экзамен Skyrocket: '+total+'/'+Q.length+' 🚀\nЗвание: '+rank.t+'\n'+Object.keys(CATS).map(c=>'• '+CATS[c].name+': '+by[c].ok+'/'+by[c].all).join('\n')+'\nКто больше? 😏';
+  try{ localStorage.setItem('skyrocket_exam_best', Math.max(total, +localStorage.getItem('skyrocket_exam_best')||0)); }catch(e){}
+  show('result');
+}
+
+$('#go').onclick = ()=>{ i=0; picks=[]; render(); show('quiz'); };
+$('#next').onclick = ()=>{ if(i<Q.length-1){ i++; render(); window.scrollTo({top:0,behavior:'smooth'}); } else result(); };
+$('#again').onclick = ()=>{ i=0; picks=[]; render(); show('quiz'); };
+$('#share').onclick = async ()=>{
+  const t = window.__share||'';
+  try{ await navigator.clipboard.writeText(t); }
+  catch(e){ const a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy');}catch(_){} a.remove(); }
+  const s=$('#toast'); s.classList.add('show'); setTimeout(()=>s.classList.remove('show'),1800);
+};
+</script>
+</body>
+</html>
